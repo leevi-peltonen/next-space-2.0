@@ -1,14 +1,17 @@
-import SpaceContainer from "@/app/components/space-container/SpaceContainer";
+'use client'
 
+import SpaceContainer from "@/app/components/space-container/SpaceContainer";
+import { useCharacterStore } from "@/app/hooks/useStore";
 
 const Account = () => {
+
+    const { character, allCharacters } = useCharacterStore()
+
     return (
         <SpaceContainer>
-            <p>Testi1</p>
-            <p>Testi2</p>
-            <p>Testi3</p>
-            <p>Testi4</p>
-            <p>Testi5</p>
+            {allCharacters.map((character) => (
+                <p>{character.name}</p>
+            ))}
         </SpaceContainer>
     );
 };
