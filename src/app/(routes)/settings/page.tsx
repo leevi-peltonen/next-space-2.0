@@ -1,11 +1,5 @@
-import SpaceContainer from "@/app/components/space-container/SpaceContainer";
+import Settings from "@/app/components/page-contents/settings/Settings";
 
-const Settings = () => {
-    return (
-        <SpaceContainer>
-            Settings
-        </SpaceContainer>
-    );
-};
-
-export default Settings;
+export default async function SettingsPage() {
+  return <Settings />;
+}
