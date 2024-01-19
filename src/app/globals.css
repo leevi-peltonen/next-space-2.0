@@ -1,27 +1,98 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&family=Merriweather:wght@400;700&family=Bree+Serif&family=Press+Start+2P&display=swap');
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+    --color-primary: #3c96df;
+    --color-secondary: #3c96df94;
+    --color-tertiary: #38b6ab77;
+    --color-background: #000013;
+    --color-neutral: #d6d9df;
+    --color-highlight: #5587a0;
+    --color-black: #000000;
+
+    --scroll-thumb-hover: #607D8B;
+    --scroll-thumb-active: #37474F;
+
+    --space-background-end: #000315;
+    --space-background-start: #31618f;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--space-background-start)
+        )
+        var(--space-background-end);
+    
+}
+
+.body-text {
+    font-family: 'Roboto', sans-serif;
+}
+
+.header-text {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dialogue-text {
+    font-family: 'Merriweather', serif;
+}
+
+.friendly-text {
+    font-family: 'Bree Serif', serif;
+}
+
+.retro-text {
+    font-family: 'Press Start 2P', cursive;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+/* Thumb */
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-background);
+    border-radius: 4px;
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease;
+}
+
+/* Hovered thumb */
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scroll-thumb-hover);
+}
+
+/* Track when scrollbar is actively being dragged */
+::-webkit-scrollbar-thumb:active {
+    background-color: var(--scroll-thumb-active);
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: #dcdcdc;
+    border-radius: 4px;
+    opacity: 0.1;
+}
+
+/* Track when scrollbar is actively being dragged */
+::-webkit-scrollbar-track:active {
+    background-color: #dcdcdc;
+}
+
+#tsparticles {
+    position: fixed;
+    z-index: -1;
+}
+
+.bg-transparent {
+    background-color: rgb(0,0,19,0.75)
 }
