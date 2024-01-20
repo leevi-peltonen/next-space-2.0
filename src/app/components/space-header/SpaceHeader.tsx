@@ -25,8 +25,8 @@ const HEADER_TABS_SIGNEDIN: Tab[] = [
         iconSize: '16'
     },
     {
-        text: 'Account',
-        destination: '/account',
+        text: 'Characters',
+        destination: '/character',
         iconSrc: '/space-home.png',
         iconAlt: 'home',
         iconSize: '16'

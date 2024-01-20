@@ -5,7 +5,7 @@ import Link from "next/link"
 
 interface Props {
     text: string
-    action: () => void
+    action?: () => void
     destination?: string
 }
 

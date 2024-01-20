@@ -15,12 +15,14 @@ export const useUserStore = create<UserState>((set) => ({
 
 type CharacterState = {
     allCharacters: Character[];
+    addCharacter: (character: Character) => void;
     character: Character | null;
     setCharacter: (character: Character |null) => void;
 }
 
 export const useCharacterStore = create<CharacterState>((set) => ({
     allCharacters: [],
+    addCharacter: (character) => set((state) => ({ allCharacters: [...state.allCharacters, character] })),
     character: null,
     setCharacter: (character) => set({ character }),
 }));
