@@ -1,4 +1,3 @@
-import { Character } from "@prisma/client"
 
 export const defaultStats = {
     health: 100,
@@ -7,5 +6,6 @@ export const defaultStats = {
     maxenergy: 10,
     strength: 1,
     agility: 1,
-    intelligence: 1
+    intelligence: 1,
+    level: 1
 }

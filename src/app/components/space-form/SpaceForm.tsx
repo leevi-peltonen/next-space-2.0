@@ -1,4 +1,4 @@
-'use client'
+
 import { Credentials } from "@/app/models/auth"
 import toast from "react-hot-toast"
 import { useRef } from "react"

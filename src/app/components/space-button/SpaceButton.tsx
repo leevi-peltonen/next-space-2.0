@@ -1,27 +1,15 @@
 'use client'
 
-import Link from "next/link"
-
-
 interface Props {
     text: string
-    action?: () => void
-    destination?: string
+    action: () => void
 }
 
-const SpaceButton = ({text, action, destination}: Props) => {
+const SpaceButton = ({text, action}: Props) => {
     return (
-        <>
-            { destination ? 
-                <Link className="bg-primary text-white rounded-xl px-4 py-2" href={destination}>
-                    {text}
-                </Link> 
-            : 
-                <button className="bg-primary text-white rounded-xl px-4 py-2" onClick={action}>
-                    { text }
-                </button>
-            }
-        </>
+        <button className="bg-primary text-white rounded-xl px-4 py-2" onClick={action}>
+            { text }
+        </button>
     )
 }
 

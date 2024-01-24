@@ -31,25 +31,24 @@ model Character {
     strength Int
     agility Int
     intelligence Int
+    level Int
+    isActive Boolean @default(false)
+    location Int[] @default([0, 0, 0])
+    travelSpeed Int @default(1)
 }
 
 model Planet {
     id        Int      @id @default(autoincrement())
     name      String   @unique
-    resources PlanetResources[]
+    resources Resource[]
+    tier Int
+    coordinates Int[]
 }
 
 model Resource {
     id        Int      @id @default(autoincrement())
     name      String   @unique
     tier     Int
-    planets PlanetResources[]
+    planets Planet[]
 }
 
-model PlanetResources {
-    @@id([resourceId, planetId])
-    Resource  Resource @relation(fields: [resourceId], references: [id])
-    resourceId    Int
-    planet  Planet @relation(fields: [planetId], references: [id])
-    planetId    Int
-}

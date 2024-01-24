@@ -2,10 +2,15 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import SpaceHeader from './components/space-header/SpaceHeader'
-import SpaceParticles from "./components/space-particles/SpaceParticles"
+//import SpaceParticles from "./components/space-particles/SpaceParticles"
 import { AppContentWidth } from './config/config'
 import { Toaster } from 'react-hot-toast'
+import Space2Header from './components/space2-header/Space2Header'
+import { cookies } from 'next/headers'
+import '@mantine/core/styles.css'
+import { ColorSchemeScript, MantineProvider } from '@mantine/core'
+import { ModalsProvider } from '@mantine/modals'
+import { verifyToken } from './utils/actions'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,35 +20,49 @@ export const metadata: Metadata = {
 }
 
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-            <main className="flex min-h-screen flex-col items-center justify-between">
-                <div className={"py-16 " + AppContentWidth} >
-                    <SpaceHeader />
-                    <div className="flex justify-center items-center min-h-96">
-                        {children}
+export default async function RootLayout({children}: {children: React.ReactNode}) {
+
+    const session = await getSessionUserData()
+
+    return (
+        <html lang="en">
+            <head>
+                <ColorSchemeScript />
+            </head>
+
+        <body className={inter.className}>
+                <main className="flex min-h-screen flex-col items-center justify-between">
+                    <div className={"py-16 " + AppContentWidth} >
+                        <MantineProvider>
+                            <ModalsProvider>
+                            <Space2Header session={session} />
+                            <div className="flex justify-center items-center min-h-96">
+                                {children}
+                            </div>
+                            {/*<SpaceParticles />*/}
+                            <Toaster
+                                position="bottom-center"
+                                toastOptions={{
+                                    className: '',
+                                    duration: 5000,
+                                    style: {
+                                        background: 'var(--color-tertiary)',
+                                        color: '#fff',
+                                    }
+                                }}
+                            />
+                            </ModalsProvider>
+                        </MantineProvider>
                     </div>
-                    <SpaceParticles />
-                    <Toaster
-                        position="bottom-center"
-                        toastOptions={{
-                            className: '',
-                            duration: 5000,
-                            style: {
-                                background: 'var(--color-tertiary)',
-                                color: '#fff',
-                            }
-                        }}
-                    />
-                </div>
-            </main>
-        </body>
-    </html>
-  )
+                </main>
+            </body>
+        </html>
+    )
+}
+
+export async function getSessionUserData() {
+    const token = cookies().get('token')?.value
+    if(!token) return null
+    const user = verifyToken(token)
+    return user
 }

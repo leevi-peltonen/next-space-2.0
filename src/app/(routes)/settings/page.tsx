@@ -1,5 +1,10 @@
-import Settings from "@/app/components/page-contents/settings/Settings";
+import SpaceContainer from "@/app/components/space-container/SpaceContainer";
+
 
 export default async function SettingsPage() {
-  return <Settings />;
+    return (
+        <SpaceContainer>
+            <h1>Settings</h1>
+        </SpaceContainer>
+    )
 }
