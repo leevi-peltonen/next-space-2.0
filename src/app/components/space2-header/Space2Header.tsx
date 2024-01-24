@@ -16,6 +16,10 @@ interface Tab {
 
 const HEADER_TABS_SIGNEDIN: Tab[] = [
     {
+        text: 'Explore',
+        destination: '/explore',
+    },
+    {
         text: 'Galaxy',
         destination: '/galaxy',
     },
@@ -32,6 +36,10 @@ const HEADER_TABS_SIGNEDIN: Tab[] = [
         text: 'Settings',
         destination: '/settings',
 
+    },
+    {
+        text: 'Development',
+        destination: '/admin',
     },
     {
         text: 'Sign out',

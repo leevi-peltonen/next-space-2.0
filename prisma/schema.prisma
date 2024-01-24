@@ -35,6 +35,7 @@ model Character {
     isActive Boolean @default(false)
     location Int[] @default([0, 0, 0])
     travelSpeed Int @default(1)
+    planets Planet[]
 }
 
 model Planet {
@@ -43,6 +44,10 @@ model Planet {
     resources Resource[]
     tier Int
     coordinates Int[]
+    enemies Enemy[]
+    character Character @relation(fields: [characterId], references: [id])
+    characterId Int @default(10)
+    isInRange Boolean @default(false)
 }
 
 model Resource {
@@ -52,3 +57,16 @@ model Resource {
     planets Planet[]
 }
 
+model Enemy {
+    id        Int      @id @default(autoincrement())
+    name      String   @unique
+    health   Int
+    maxhealth Int
+    energy Int
+    maxenergy Int
+    strength Int
+    agility Int
+    intelligence Int
+    level Int
+    planets Planet[]
+}

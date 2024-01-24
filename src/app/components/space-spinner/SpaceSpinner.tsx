@@ -1,13 +1,11 @@
-import { InfinitySpin } from "react-loader-spinner";
+import { Loader } from "@mantine/core"
 
 const SpaceSpinner = () => {
     return (
-        <div className="flex items-center justify-center">
-            <InfinitySpin 
-                width="200"
-            />
-        </div>
-    )
+        <Loader
+            size={50}
+        />
+    ) 
 }
 
 export default SpaceSpinner

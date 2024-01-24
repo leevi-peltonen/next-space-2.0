@@ -64,13 +64,23 @@ export const createCharacter = async (formData: FormData) => {
     const characters = await getAllCharacters(user.id)
     if(characters.length >= 3) throw new Error('Max characters reached')
 
-    await prisma.character.create({
+    const character = await prisma.character.create({
         data: {
             ...defaultStats,
             name: characterName,
             userId: user.id
         }
     })
+
+    await prisma.planet.create({
+        data: {
+            name: 'Alpha Earth',
+            tier: 1,
+            coordinates: [600, 400],
+            characterId: character.id,
+        }
+    })
+
     revalidatePath('/character')
 }
 

@@ -14,7 +14,9 @@ export default async function GalaxyPage() {
     const character = await getActiveCharacter(user.id)
     if(!character) return <h1>No active character</h1>
     return (
-        <SpaceContainer>
+        <SpaceContainer
+            classes="grid grid-cols-4 gap-10"
+        >
             {planets.map(planet => {
                 return (
                     <PlanetBox planet={planet} key={planet.id} travelToPlanet={travelToPlanet} currentLocation={character.location} speed={character.travelSpeed} />
@@ -33,14 +35,10 @@ export const getAllAvailablePlanets = async () => {
     const character = await getActiveCharacter(user.id)
     if(!character) return []
 
-    const maxTier = Math.floor(character.level + 10 / 10)
-
 
     const planets = prisma.planet.findMany({
         where: {
-            tier: {
-                lt: maxTier
-            }
+            isInRange: true
         },
         orderBy: {
             tier: 'asc'

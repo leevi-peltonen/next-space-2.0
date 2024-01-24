@@ -17,17 +17,18 @@ export default async function PlanetPage() {
 
     return (
         <SpaceContainer>
-            <h1 
-                className="text-4xl text-white text-center"
-            >{planet.name}</h1>
-            {planet.resources.map(resource => {
-                return (
-                    <div key={resource.id} className="bg-background rounded-xl m-10 p-10 hover:cursor-pointer hover:bg-gray-700">
-                        <h1>{resource.name} - Tier {resource.tier}</h1>
-                    </div>
-                )
-            })}
-
+            
+                <h1 
+                    className="text-4xl text-white text-center"
+                >{planet.name}</h1>
+                {planet.resources.map(resource => {
+                    return (
+                        <div key={resource.id} className="bg-background rounded-xl m-10 p-10 hover:cursor-pointer hover:bg-gray-700">
+                            <h1>{resource.name} - Tier {resource.tier}</h1>
+                        </div>
+                    )
+                })}
+            
         </SpaceContainer>
     )
 }
